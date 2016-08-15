@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 20. Jul, 2016 20:32 p.m.
+-- Generation Time: 15. Aug, 2016 14:08 p.m.
 -- Server-versjon: 10.1.9-MariaDB
 -- PHP Version: 5.6.15
 
@@ -59,6 +59,13 @@ CREATE TABLE `businesses` (
   `BusinessPrice` int(11) NOT NULL,
   `BusinessCashbox` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `businesses`
+--
+
+INSERT INTO `businesses` (`BusinessID`, `BusinessName`, `BusinessOwnerID`, `BusinessInteriorWorld`, `BusinessExteriorWorld`, `BusinessInterior`, `BusinessInteriorX`, `BusinessInteriorY`, `BusinessInteriorZ`, `BusinessExteriorX`, `BusinessExteriorY`, `BusinessExteriorZ`, `BusinessLocked`, `BusinessPrice`, `BusinessCashbox`) VALUES
+(1, 'Kingpin''s Diner', 0, 12537, 0, 1, 681.419, -447.522, -25.6098, -2351.08, 492.678, 30.8114, 0, 35000, 0);
 
 -- --------------------------------------------------------
 
@@ -118,6 +125,13 @@ CREATE TABLE `clothes` (
   `Holder` int(16) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dataark for tabell `clothes`
+--
+
+INSERT INTO `clothes` (`ClothingID`, `ModelID`, `BoneID`, `OffsetX`, `OffsetY`, `OffsetZ`, `RotX`, `RotY`, `RotZ`, `ScaleX`, `ScaleY`, `ScaleZ`, `Holder`) VALUES
+(9, 18977, 2, 0.048999, 0, 0, 0, 0, 0, 1, 1, 1, 1);
+
 -- --------------------------------------------------------
 
 --
@@ -137,6 +151,16 @@ CREATE TABLE `corpses` (
   `CorpseY` float NOT NULL,
   `CorpseZ` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `corpses`
+--
+
+INSERT INTO `corpses` (`CorpseID`, `CorpseVictimID`, `CorpseVictimSkin`, `CorpseKillerID`, `CorpseKillerDistance`, `CorpseKillWeapon`, `CorpseStatus`, `CorpseDeathTime`, `CorpseX`, `CorpseY`, `CorpseZ`) VALUES
+(21, 2, 280, 1, 3.63, 23, 0, 1468932132, -1954.67, 139.841, 27.012),
+(22, 2, 280, 1, 0.635, 0, 0, 1468932372, -1951.16, 135.681, 26.281),
+(23, 1, 295, 1, 0, 127, 0, 1469023360, 0, 0, 0),
+(24, 1, 295, 1, 0, 127, 0, 1469026226, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -174,6 +198,15 @@ CREATE TABLE `factions` (
   `FactionSpawnA` float NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dataark for tabell `factions`
+--
+
+INSERT INTO `factions` (`FactionID`, `FactionName`, `FactionType`, `FactionShortName`, `FactionFlags`, `FactionPermissions`, `FactionColour`, `Rank1`, `Rank2`, `Rank3`, `Rank4`, `Rank5`, `Rank6`, `Rank7`, `Rank8`, `Rank9`, `Rank10`, `Rank11`, `Rank12`, `Rank13`, `Rank14`, `Rank15`, `Rank16`, `FactionSpawnX`, `FactionSpawnY`, `FactionSpawnZ`, `FactionSpawnA`) VALUES
+(1, 'San Fierro Police Department', 1, 'POLICE', '(gov)', '(fc:1)(sp:1)(gm:6)(um:6)(m:10)', '0198E1', 'Police Officer I', 'Police Officer II', 'Police Officer III', 'Sergeant I', 'Sergeant II', 'Lieutenant', 'Captain', 'Commander', 'Deputy Chief of Police', 'Chief of Police', '', '', '', '', '', '', 0, 0, 0, 0),
+(2, 'Criminal Investigation Service', 1, 'CIS', '(gov)(det)', '(fc:1)(sp:1)(gm:8)(um:8)(m:11)', '9C9C9C', 'Junior Field Agent', 'Field Agent I', 'Field Agent II', 'Senior Field Agent', 'Lead Agent', 'Senior Lead Agent', 'Supervisory Agent', 'Executive Agent', 'Assistant Director', 'Deputy Director', 'Director', '', '', '', '', '', -2454.46, 503.976, 30.0786, 280),
+(3, 'San Fierro Fire Department', 2, 'SFFD', '(gov)', '(fc:1)(sp:1)(gm:7)(um:7)(m:10)', 'CD5C5C', 'Probationary Firefighter', 'Firefighter I', 'Firefighter II', 'Fire Engineer I', 'Fire Engineer II', 'Lead Engineer', 'Lieutenant', 'Captain', 'Deputy Commissioner', 'Commissioner', '', '', '', '', '', '', 0, 0, 0, 0);
+
 -- --------------------------------------------------------
 
 --
@@ -186,6 +219,17 @@ CREATE TABLE `inventory` (
   `ItemType` int(11) NOT NULL,
   `Amount` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dataark for tabell `inventory`
+--
+
+INSERT INTO `inventory` (`ItemID`, `ItemOwnerID`, `ItemType`, `Amount`) VALUES
+(1, 1, 23, 1),
+(6, 1, 29, 10),
+(51, 1, 30, 1),
+(53, 2, 23, 1),
+(55, 1, 20, 19);
 
 -- --------------------------------------------------------
 
@@ -200,9 +244,6 @@ CREATE TABLE `logs` (
   `LogPlayer` varchar(32) NOT NULL,
   `LogTimestamp` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
-
--- --------------------------------------------------------
 
 --
 -- Tabellstruktur for tabell `statebuildings`
@@ -259,6 +300,35 @@ CREATE TABLE `vehicles` (
   `Type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dataark for tabell `vehicles`
+--
+
+INSERT INTO `vehicles` (`VehicleID`, `ModelID`, `OwnerID`, `Plate`, `Insurance`, `Fuel`, `Traveled`, `VehicleState`, `Colour1`, `Colour2`, `ParkedX`, `ParkedY`, `ParkedZ`, `ParkedA`, `Nitrous`, `Hydraulics`, `Wheels`, `Siren`, `VehiclePanels`, `VehicleDoors`, `VehicleLights`, `VehicleTires`, `Broken`, `Faction`, `Carsign`, `Type`) VALUES
+(1, 426, 1, 'LKN-398', 3, 100, 0, 100, 1, 1, -1987.95, 125.091, 27.191, 180.417, 3, 1, 8, 0, 0, 0, 0, 0, 0, 0, '', 1),
+(2, 521, 1, 'ADG-523', 3, 100, 0, 100, 3, 1, -1986.94, 141.493, 27.1044, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 1),
+(3, 438, 1, 'PSX-487', 3, 100, 0, 100, 6, 6, -1987.97, 132.975, 27.5436, 0, 3, 1, 0, 0, 0, 0, 0, 0, 0, 0, '', 1),
+(4, 597, 0, 'BXE-062', 4, 100, 0, 100, 0, 1, -1573.65, 706.107, -5.626, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 'A1', 2),
+(5, 521, 2, 'LCN-362', 3, 100, 0, 100, 3, 1, -1986.94, 149.493, 27.1044, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, '', 1),
+(6, 597, 0, 'LXJ-329', 4, 100, 0, 100, 0, 1, -1573.6, 710.149, -5.627, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 'A2', 2),
+(7, 426, 0, 'JSW-142', 4, 100, 0, 100, 0, 0, -1596.52, 676.246, -5.586, 359.273, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, '', 1),
+(8, 599, 0, 'TTN-494', 4, 100, 0, 100, 0, 1, -1590.36, 705.7, -5.045, 269.302, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 'B1', 2),
+(9, 597, 0, 'IBH-067', 4, 100, 0, 100, 0, 1, -1573.46, 714.263, -5.747, 90, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 'A3', 2),
+(10, 597, 0, 'QOG-377', 4, 100, 0, 100, 0, 1, -1573.45, 718.372, -5.747, 90.838, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 'A4', 2),
+(11, 497, 0, 'SE1-PD1', 4, 100, 0, 100, 0, 1, -1679.88, 705.69, 30.778, 88.64, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 'SE1SFPD', 1),
+(12, 426, 0, 'ANC-575', 4, 100, 0, 100, 0, 0, -2429.71, 515.382, 29.586, 216.69, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, '', 1),
+(13, 426, 0, 'NOI-711', 4, 100, 0, 100, 0, 0, -2425.89, 518.488, 29.579, 222.452, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, '', 1),
+(14, 560, 0, 'ETV-655', 4, 100, 0, 100, 0, 0, -2422.3, 521.659, 29.635, 225.939, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, '', 1),
+(15, 560, 0, 'QRB-142', 4, 100, 0, 100, 0, 0, -2419.16, 525.048, 29.635, 231.637, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, '', 1),
+(16, 579, 0, 'DSO-268', 4, 100, 0, 100, 0, 0, -2416.8, 528.56, 29.864, 239.024, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, '', 1),
+(17, 490, 0, 'OGI-932', 4, 100, 0, 100, 0, 0, -2443.23, 531.904, 30.042, 180.794, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, '', 1),
+(18, 490, 0, 'WMN-344', 4, 100, 0, 100, 0, 0, -2439.04, 532.003, 30.032, 179.33, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, '', 1),
+(19, 455, 0, 'BXC-719', 4, 100, 0, 100, 1, 1, -2438.4, 515.608, 30.347, 181.184, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, '', 1),
+(20, 579, 0, 'BRS-459', 4, 100, 0, 100, 0, 0, -2415.19, 532.067, 29.921, 247.89, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, '', 1),
+(21, 402, 0, 'UFP-533', 4, 100, 0, 100, 0, 0, -2414.17, 535.852, 29.708, 257.548, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, '', 1),
+(22, 402, 0, 'VRU-726', 4, 100, 0, 100, 0, 0, -2413.99, 539.932, 29.998, 268.734, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, '', 1),
+(23, 487, 0, 'WCO-745', 4, 100, 0, 100, 0, 0, -2472.96, 491.717, 30.241, 279.01, 0, 0, 0, 1, 0, 0, 0, 0, 0, 2, '', 1),
+(24, 521, 0, 'CJH-524', 4, 100, 0, 100, 0, 0, -2434.17, 509.352, 29.5, 111.719, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, '', 1);
 
 --
 -- Indexes for dumped tables
@@ -337,7 +407,7 @@ ALTER TABLE `accounts`
 -- AUTO_INCREMENT for table `businesses`
 --
 ALTER TABLE `businesses`
-  MODIFY `BusinessID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `BusinessID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `characters`
 --
@@ -347,22 +417,22 @@ ALTER TABLE `characters`
 -- AUTO_INCREMENT for table `clothes`
 --
 ALTER TABLE `clothes`
-  MODIFY `ClothingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ClothingID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `corpses`
 --
 ALTER TABLE `corpses`
-  MODIFY `CorpseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `CorpseID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 --
 -- AUTO_INCREMENT for table `factions`
 --
 ALTER TABLE `factions`
-  MODIFY `FactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `FactionID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `inventory`
 --
 ALTER TABLE `inventory`
-  MODIFY `ItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `ItemID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 --
 -- AUTO_INCREMENT for table `logs`
 --
@@ -377,7 +447,7 @@ ALTER TABLE `statebuildings`
 -- AUTO_INCREMENT for table `vehicles`
 --
 ALTER TABLE `vehicles`
-  MODIFY `VehicleID` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
+  MODIFY `VehicleID` int(16) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
